@@ -7,8 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import pk.smartq.journalApp.entities.User;
 import pk.smartq.journalApp.repositories.UserRepository;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +30,6 @@ public class UserService {
 
     public User createUser (User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(List.of("USER"));
         return userRepository.save(user);
     }
 

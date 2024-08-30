@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pk.smartq.journalApp.entities.User;
 import pk.smartq.journalApp.services.UserService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,12 +21,12 @@ public class AuthController {
      @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
 
-        System.out.println("Hello");
         try {
             Optional<User> userInDb = userService.findUserByUsername(user.getUsername());
             if (userInDb.isPresent()) {
                 return new ResponseEntity<>("username is already present in the database", HttpStatus.OK);
             }
+            user.setRoles(List.of("USER"));
             userService.createUser(user);
             return new ResponseEntity<>(user, HttpStatus.CREATED);
 
