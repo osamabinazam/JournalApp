@@ -1,20 +1,8 @@
 
+# Active profile
 spring:
-    data:
-        mongodb:
-            host: localhost
-            port: 27017
-            database: journal_db
-            auto-index-creation: true
+    profiles:
+        active: dev
 
-    application:
-        name: journalApp
 
-    security:
-        user:
-            name: user
-            password: password
-
-server:
-    port: 8081
 

@@ -1,0 +1,23 @@
+
+spring:
+    data:
+        mongodb:
+            host: localhost
+            port: 27017
+            database: journal_db
+            auto-index-creation: true
+
+    application:
+        name: journalApp
+
+    security:
+        user:
+            name: user
+            password: password
+
+server:
+    port: 8080
+    servlet:
+        context-path: ""
+
+
