@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pk.smartq.journalApp.payloads.ErrorResponse;
 
@@ -12,9 +13,10 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @RestController
+@RequestMapping("/public")
 public class HealthCheck {
 
-    @GetMapping("/health")
+    @GetMapping("/api/health-check")
     public ResponseEntity<?> healthCheck(HttpServletRequest request) {
         try {
             Map<String, Object> body = new HashMap<>();

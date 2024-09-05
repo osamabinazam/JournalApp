@@ -1,5 +1,6 @@
 package pk.smartq.journalApp.cotrollers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/public/api/auth")
+@Slf4j
 public class AuthController {
     @Autowired
     private UserService userService;
@@ -24,6 +26,7 @@ public class AuthController {
         try {
             Optional<User> userInDb = userService.findUserByUsername(user.getUsername());
             if (userInDb.isPresent()) {
+                log.info("User ({}) is already present in the database", user.getUsername());
                 return new ResponseEntity<>("username is already present in the database", HttpStatus.OK);
             }
             user.setRoles(List.of("USER"));
